@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krithigayogasri SSG - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-text p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #764ba2;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-category p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .education-item, .project-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .education-item:hover, .project-card:hover {
+            background: #e9ecef;
+            border-left-color: #764ba2;
+            transform: translateX(10px);
+        }
+
+        .education-item h3, .project-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .year {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .details {
+            color: #666;
+        }
+
+        .project-card p {
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .course-item, .cert-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .course-item:hover, .cert-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .course-status {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 0.3rem;
+        }
+
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .social-link:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-text h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .skills-grid, .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>KRITHIGAYOGASRI SSG</h1>
+                    <p>Computer Science Student | Cybersecurity Specialist</p>
+                </div>
+                <div class="contact-info">
+                    <div>📍 Sivakasi, India 623123</div>
+                    <div>📧 <a href="mailto:krithiii05@gmail.com">krithi05@gmail.com</a></div>
+                    <div>📱 +91 84899 25035</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Passionate Computer Science student specializing in Cybersecurity and Software Development. Experienced in Flutter, Python Flask, Java, and web development. Strong interest in security, networking, and system design. Dedicated to building impactful applications and solving real-world problems.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="education-item">
+                <div class="year">2023 - 2027</div>
+                <h3>Bachelor of Engineering - Computer Science and Engineering</h3>
+                <div class="details">Mepco Schlenk Engineering College, Sivakasi</div>
+                <div class="details"><strong>CGPA: 7.45</strong></div>
+            </div>
+            <div class="education-item">
+                <div class="year">2021 - 2023</div>
+                <h3>Higher Secondary Certificate (HSC)</h3>
+                <div class="details">Sri Shenbaga Vinayagar Matriculation Higher Secondary, Sivakasi</div>
+                <div class="details"><strong>Percentage: 93.67%</strong></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <p>C, Python, Java, SQL, HTML, CSS, JavaScript</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Databases</h3>
+                    <p>MongoDB, Flutter, Flask, Oracle SQL</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+                    <p>Git, Linux, VS Code, Android Studio, Wireshark</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>🌿 Eden's Corner</h3>
+                <p>Mobile app developed using Flutter and Python Flask focuses on managing gardening activities</p>
+            </div>
+            <div class="project-card">
+                <h3>💼 Job Portal Application</h3>
+                <p>Desktop app using Java and Oracle SQL which connects the job seekers and the employers</p>
+            </div>
+            <div class="project-card">
+                <h3>🔐 Vaultodo</h3>
+                <p>Web application integrating Web UI & Security concepts which is a to-do application designed with a secret vault to store files</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Cybersecurity Courses</h2>
+            <div class="courses-grid">
+                <div class="course-item">
+                    <div>Number Theory for Information Security</div>
+                    <div class="course-status">✓ Completed</div>
+                </div>
+                <div class="course-item">
+                    <div>Computer Forensics</div>
+                    <div class="course-status">✓ Completed</div>
+                </div>
+                <div class="course-item">
+                    <div>Intrusion Detection and Prevention Systems</div>
+                    <div class="course-status">✓ Completed</div>
+                </div>
+                <div class="course-item">
+                    <div>Cryptocurrency and Blockchain Technology</div>
+                    <div class="course-status">✓ Completed</div>
+                </div>
+                <div class="course-item">
+                    <div>Ethical Hacking</div>
+                    <div class="course-status">⏳ Upcoming</div>
+                </div>
+                <div class="course-item">
+                    <div>Web Application Security</div>
+                    <div class="course-status">⏳ Upcoming</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <div class="courses-grid">
+                <div class="cert-item">Introduction to CyberSecurity by Cisco</div>
+                <div class="cert-item">Cyber Cadet Program by ISEA</div>
+                <div class="cert-item">NPTEL - Programming with C++</div>
+                <div class="cert-item">NPTEL - Foundations of R Software</div>
+                <div class="cert-item">NPTEL - Introduction to LLM models</div>
+                <div class="cert-item">IEEE certification for professional English</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Soft Skills</h2>
+            <div class="soft-skills">
+                <span class="skill-tag">Communication</span>
+                <span class="skill-tag">Team Building</span>
+                <span class="skill-tag">Task Collaboration</span>
+                <span class="skill-tag">Willingness to Learn</span>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <a href="https://www.linkedin.com/in/krithigayogasri-ssg-4787842b9/" target="_blank" class="social-link">
+                Connect on LinkedIn →
+            </a>
+            <p style="margin-top: 2rem;">© 2024 Krithigayogasri SSG. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
