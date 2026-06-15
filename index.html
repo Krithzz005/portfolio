@@ -1,437 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krithigayogasri SSG - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krithigayogasri SSG | Portfolio</title>
+  <style>
+    /* Base Styles & Typography */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+    
+    :root {
+      --primary-color: #2563eb;
+      --redhat-color: #cc0000;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --bg-color: #f3f4f6;
+      --card-bg: #ffffff;
+      --border-color: #e5e7eb;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
 
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            animation: slideDown 0.6s ease;
-        }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    /* Header & Hero Section */
+    header {
+      background: var(--card-bg);
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+    .hero-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-        .header-text h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
+    .hero-content h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 5px;
+    }
 
-        .header-text p {
-            color: #666;
-            font-size: 1.2rem;
-        }
+    .hero-content h2 {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: #555;
-        }
+    .contact-links {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
 
-        .contact-info a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    .contact-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
 
-        .contact-info a:hover {
-            color: #764ba2;
-        }
+    .contact-links a:hover {
+      color: var(--primary-color);
+    }
 
-        section {
-            background: white;
-            margin: 2rem 0;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            animation: fadeInUp 0.8s ease;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .btn-primary {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
 
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-        }
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* Section Global Styles */
+    section {
+      padding: 60px 0;
+    }
 
-        h2 {
-            color: #667eea;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
+    .section-title {
+      font-size: 1.75rem;
+      margin-bottom: 30px;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--primary-color);
+      display: inline-block;
+      padding-bottom: 5px;
+    }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
+    /* Summary Section */
+    .summary-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
 
-        .about-content {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.8;
-        }
+    /* Cybersecurity & Certifications Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s ease;
+    }
 
-        .skill-category {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 1.5rem;
-            border-radius: 15px;
-            transition: all 0.3s;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        .skill-category:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-        }
+    .rhcsa-highlight {
+      border: 2px solid var(--redhat-color);
+      background: #fffafa;
+    }
 
-        .skill-category h3 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
+    .rhcsa-highlight h3 {
+      color: var(--redhat-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .skill-category p {
-            color: #555;
-            line-height: 1.6;
-        }
+    .tag-container {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-        .education-item, .project-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid #667eea;
-            transition: all 0.3s;
-        }
+    .tag {
+      background: #e5e7eb;
+      color: var(--text-main);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
 
-        .education-item:hover, .project-card:hover {
-            background: #e9ecef;
-            border-left-color: #764ba2;
-            transform: translateX(10px);
-        }
+    /* Projects Section */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
 
-        .education-item h3, .project-card h3 {
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
 
-        .education-item .year {
-            color: #667eea;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+    .project-desc {
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
 
-        .education-item .details {
-            color: #666;
-        }
+    .project-links {
+      margin-top: 20px;
+    }
 
-        .project-card p {
-            color: #555;
-            margin-top: 0.5rem;
-        }
+    .project-links a {
+      text-decoration: none;
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-right: 15px;
+    }
 
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+    .project-links a:hover {
+      text-decoration: underline;
+    }
 
-        .course-item, .cert-item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.2rem;
-            border-radius: 12px;
-            transition: all 0.3s;
-            text-align: center;
-        }
+    /* Timeline Section */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-        .course-item:hover, .cert-item:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
+    .timeline-item {
+      padding: 20px 30px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border-left: 5px solid var(--primary-color);
+    }
 
-        .course-status {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            margin-top: 0.3rem;
-        }
+    .timeline-date {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+    }
 
-        .soft-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
 
-        .skill-tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s;
-            cursor: default;
-        }
-
-        .skill-tag:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .social-link {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .social-link:hover {
-            background: #667eea;
-            color: white;
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(255,255,255,0.3);
-        }
-
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .header-text h1 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 1.5rem;
-            }
-
-            .skills-grid, .courses-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .timeline-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="header-text">
-                    <h1>KRITHIGAYOGASRI SSG</h1>
-                    <p>Computer Science Student | Cybersecurity Specialist</p>
-                </div>
-                <div class="contact-info">
-                    <div>📍 Sivakasi, India 623123</div>
-                    <div>📧 <a href="mailto:krithiii05@gmail.com">krithi05@gmail.com</a></div>
-                    <div>📱 +91 84899 25035</div>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <div class="container">
-        <section>
-            <h2>About Me</h2>
-            <div class="about-content">
-                <p>Passionate Computer Science student specializing in Cybersecurity and Software Development. Experienced in Flutter, Python Flask, Java, and web development. Strong interest in security, networking, and system design. Dedicated to building impactful applications and solving real-world problems.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Education</h2>
-            <div class="education-item">
-                <div class="year">2023 - 2027</div>
-                <h3>Bachelor of Engineering - Computer Science and Engineering</h3>
-                <div class="details">Mepco Schlenk Engineering College, Sivakasi</div>
-                <div class="details"><strong>CGPA: 7.45</strong></div>
-            </div>
-            <div class="education-item">
-                <div class="year">2021 - 2023</div>
-                <h3>Higher Secondary Certificate (HSC)</h3>
-                <div class="details">Sri Shenbaga Vinayagar Matriculation Higher Secondary, Sivakasi</div>
-                <div class="details"><strong>Percentage: 93.67%</strong></div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <p>C, Python, Java, SQL, HTML, CSS, JavaScript</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Frameworks & Databases</h3>
-                    <p>MongoDB, Flutter, Flask, Oracle SQL</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
-                    <p>Git, Linux, VS Code, Android Studio, Wireshark</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Projects</h2>
-            <div class="project-card">
-                <h3>🌿 Eden's Corner</h3>
-                <p>Mobile app developed using Flutter and Python Flask focuses on managing gardening activities</p>
-            </div>
-            <div class="project-card">
-                <h3>💼 Job Portal Application</h3>
-                <p>Desktop app using Java and Oracle SQL which connects the job seekers and the employers</p>
-            </div>
-            <div class="project-card">
-                <h3>🔐 Vaultodo</h3>
-                <p>Web application integrating Web UI & Security concepts which is a to-do application designed with a secret vault to store files</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Cybersecurity Courses</h2>
-            <div class="courses-grid">
-                <div class="course-item">
-                    <div>Number Theory for Information Security</div>
-                    <div class="course-status">✓ Completed</div>
-                </div>
-                <div class="course-item">
-                    <div>Computer Forensics</div>
-                    <div class="course-status">✓ Completed</div>
-                </div>
-                <div class="course-item">
-                    <div>Intrusion Detection and Prevention Systems</div>
-                    <div class="course-status">✓ Completed</div>
-                </div>
-                <div class="course-item">
-                    <div>Cryptocurrency and Blockchain Technology</div>
-                    <div class="course-status">✓ Completed</div>
-                </div>
-                <div class="course-item">
-                    <div>Ethical Hacking</div>
-                    <div class="course-status">⏳ Upcoming</div>
-                </div>
-                <div class="course-item">
-                    <div>Web Application Security</div>
-                    <div class="course-status">⏳ Upcoming</div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Certifications</h2>
-            <div class="courses-grid">
-                <div class="cert-item">Introduction to CyberSecurity by Cisco</div>
-                <div class="cert-item">Cyber Cadet Program by ISEA</div>
-                <div class="cert-item">NPTEL - Programming with C++</div>
-                <div class="cert-item">NPTEL - Foundations of R Software</div>
-                <div class="cert-item">NPTEL - Introduction to LLM models</div>
-                <div class="cert-item">IEEE certification for professional English</div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Soft Skills</h2>
-            <div class="soft-skills">
-                <span class="skill-tag">Communication</span>
-                <span class="skill-tag">Team Building</span>
-                <span class="skill-tag">Task Collaboration</span>
-                <span class="skill-tag">Willingness to Learn</span>
-            </div>
-        </section>
+  <header>
+    <div class="container hero-flex">
+      <div class="hero-content">
+        <h1>Krithigayogasri SSG</h1>
+        <h2>Red Hat Certified System Administrator | Final Year CS Student (Cybersecurity Honours)</h2>
+        <div class="contact-links">
+          <a href="mailto:krithiii05@gmail.com">krithiii05@gmail.com</a>
+          <span>|</span>
+          <a href="https://www.linkedin.com/in/krithigayogasri-ssg-4787842b9" target="_blank">LinkedIn</a>
+          <span>|</span>
+          <a href="#" target="_blank">GitHub</a>
+          <span>|</span>
+          <span>+91 XXXXX XXXXX</span> </div>
+      </div>
+      <div>
+        <a href="./assets/Krithigayogasri_Resume.pdf" download class="btn-primary">Download CV</a>
+      </div>
     </div>
+  </header>
 
-    <footer>
-        <div class="container">
-            <a href="https://www.linkedin.com/in/krithigayogasri-ssg-4787842b9/" target="_blank" class="social-link">
-                Connect on LinkedIn →
-            </a>
-            <p style="margin-top: 2rem;">© 2025 Krithigayogasri SSG. All rights reserved.</p>
+  <section id="about" class="container">
+    <h2 class="section-title">Professional Summary</h2>
+    <div class="summary-card">
+      A passionate Computer Science student specializing in Cybersecurity and Software Development. I hold a strong foundation in Red Hat Enterprise Linux (RHEL), modern web development, and network security. Dedicated to building impactful, user-focused applications and exploring innovative solutions to make technology safer and more efficient.
+    </div>
+  </section>
+
+  <section id="skills" class="container">
+    <h2 class="section-title">Cybersecurity & Core Expertise</h2>
+    <div class="skills-grid">
+      
+      <div class="card rhcsa-highlight">
+        <h3>🎖️ Red Hat Certified System Administrator</h3>
+        <p style="margin-top: 10px; color: var(--text-muted);">
+          Industry-recognized certification validating skills in system administration, security configurations, and user management in RHEL environments.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Technical Stack</h3>
+        <div class="tag-container">
+          <span class="tag">Linux / RHEL</span>
+          <span class="tag">Python Flask</span>
+          <span class="tag">Java</span>
+          <span class="tag">React.js</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Cisco Packet Tracer</span>
         </div>
-    </footer>
+      </div>
+
+      <div class="card">
+        <h3>Coursework & Micro-Credentials</h3>
+        <div class="tag-container">
+          <span class="tag">Tata Cyber Analyst Simulation</span>
+          <span class="tag">Cyber Threat Management</span>
+          <span class="tag">IDPS & Forensics</span>
+          <span class="tag">Network Topology</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects" class="container">
+    <h2 class="section-title">Selected Projects</h2>
+    <div class="project-grid">
+
+      <div class="card project-card">
+        <h3>ParkEase Dashboard</h3>
+        <p class="project-desc">
+          <strong>Problem:</strong> Urban parking spaces are difficult to track in real-time, leading to congestion.<br>
+          <strong>Solution:</strong> Developed a highly responsive, user-aligned interactive dashboard to visualize and track parking space availability.
+        </p>
+        <div class="tag-container">
+          <span class="tag">React.js</span>
+          <span class="tag">UI/UX Design</span>
+        </div>
+        <div class="project-links">
+          <a href="#">View Demo</a>
+          <a href="#">GitHub Repo</a>
+        </div>
+      </div>
+
+      <div class="card project-card">
+        <h3>Enterprise Network Simulation</h3>
+        <p class="project-desc">
+          <strong>Problem:</strong> Sub-optimal network configurations leading to IP conflicts and routing failures.<br>
+          <strong>Solution:</strong> Architected and troubleshooted complex network topologies, focusing on VLAN configuration, inter-VLAN routing, and precise DHCP management.
+        </p>
+        <div class="tag-container">
+          <span class="tag">Cisco Packet Tracer</span>
+          <span class="tag">Network Engineering</span>
+        </div>
+        <div class="project-links">
+          <a href="#">View Documentation</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience" class="container">
+    <h2 class="section-title">Experience & Education Journey</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">January 2026 - April 2026</div>
+        <div class="timeline-title">Intern</div>
+        <div class="timeline-subtitle">Infosys Springboard</div>
+        <p style="margin-top: 10px; color: var(--text-muted);">Engaged in practical, enterprise-level technical development and problem-solving methodologies.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023 - Present</div>
+        <div class="timeline-title">B.E. Computer Science and Engineering</div>
+        <div class="timeline-subtitle">Mepco Schlenk Engineering College | Honours in Cybersecurity</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022 - 2023</div>
+        <div class="timeline-title">HSC, Mathematics and Computer Science</div>
+        <div class="timeline-subtitle">Sri Shenbaga Vinayagar Matriculation Higher Secondary School | Scored 93.67%</div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer style="text-align: center; padding: 30px; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 40px;">
+    <p>&copy; 2026 Krithigayogasri SSG. Built with passion.</p>
+  </footer>
+
 </body>
 </html>
